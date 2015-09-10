@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Rails Devise Pundit" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Devise Pundit" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Sonoma State: Great Homo History Hunt" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Sonoma State: Great Homo History Hunt" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -13,8 +13,14 @@
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
+      <div class="container">
+        <div class="header clearfix">
+          <h3 class="text-muted pull-right" id="clock"></h3>
+          <h3 class="text-muted">Sonoma State: Great Homo History Hunt</h3>
+        </div>
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>
