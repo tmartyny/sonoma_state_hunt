@@ -3,4 +3,7 @@
 <% else %>
   <li><%= link_to 'Sign in', signin_path %></li>
 <% end %>
-<li><%= link_to 'Sonoma State: Great Homo History Hunt', "" %></li>
+<li><p class="navbar-text"> 'Sonoma State: Great Homo History Hunt'</p></li>
+<% if user_signed_in? %>
+  <li><p class="navbar-text" id="clock"></p></li>
+<% end %>
