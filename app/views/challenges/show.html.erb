@@ -1,31 +1,29 @@
-<div class="challenge_body">
-  <%= javascript_tag do %>
-    window.destinationLat = '<%= @challenge.lat %>';
-    window.destinationLon = '<%= @challenge.lon %>';
-  <% end %>
-  <% if @total_points %>
-    <h4 class="text-muted"> Your Score: <%= @total_points %></h4>
-  <% end %>
-  <div class="col-md-8 pull-left" id="challenge_media">
-    <%= image_tag(@challenge.photo_url, class: "challenge_photo") %>
-  </div>
+<%= javascript_tag do %>
+  window.destinationLat = '<%= @challenge.lat %>';
+  window.destinationLon = '<%= @challenge.lon %>';
+<% end %>
+<% if @total_points %>
+  <h4 class="text-muted"> Your Score: <%= @total_points %></h4>
+<% end %>
+<div class="col-md-8 pull-left" id="challenge_media">
+  <%= image_tag(@challenge.photo_url, class: "challenge_photo") %>
+</div>
 
-  <div class="col-md-4 pull-right" id="challenge_clue">
-    <h4><%=@challenge.name%></h4>
-    <p class="points">Points: (<%=@challenge.points%>)</p>
-    <p class="direction"><%=@challenge.direction%></p>
-    <p id="hotCold">
-      <button id="checkTemp" class="btn btn-default clickable">Hot Or Cold?</button>
-    </p>
-    <p><%=@challenge.clue%></p>
+<div class="col-md-4 pull-right" id="challenge_clue">
+  <h4><%=@challenge.name%></h4>
+  <p class="points">Points: (<%=@challenge.points%>)</p>
+  <p class="direction"><%=@challenge.direction%></p>
+  <p id="hotCold">
+    <button id="checkTemp" class="btn btn-default clickable">Hot Or Cold?</button>
+  </p>
+  <p><%=@challenge.clue%></p>
 
-    <%= form_for [@user, @submission] do |f| %>
-      <%= f.label "URL for Your Photo" %>
-      <%= f.text_field :photo %>
-      <%= f.label "Answer Questions:" %>
-      <%= f.text_field :text %>
-      <%= f.hidden_field :challenge_id, :value => @challenge.id %>
-      <%= f.submit 'Submit and Continue', class: "btn btn-default" %>
-    <% end %>
-  </div>
+  <%= form_for [@user, @submission], remote: true do |f| %>
+    <%= f.label "URL for Your Photo" %>
+    <%= f.text_field :photo %>
+    <%= f.label "Answer Questions:" %>
+    <%= f.text_field :text %>
+    <%= f.hidden_field :challenge_id, :value => @challenge.id %>
+    <%= f.submit 'Submit and Continue', class: "btn btn-default" %>
+  <% end %>
 </div>
