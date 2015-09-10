@@ -10,4 +10,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.total_points(user)
+    Challenge.find(Submission
+                    .where(user_id: user.id)
+                    .pluck(:challenge_id)
+                   ).map(&:points)
+                    .reduce(:+)
+  end
 end
