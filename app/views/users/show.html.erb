@@ -1,2 +1,10 @@
-<h3>User</h3>
-<p>Name: <%= @user.name if @user.name %></p>
+<div class="challenge_body">
+  <p class="lead">Welcome <%= @user.name if @user.name %>!</p>
+  <p class="lead">Start: Castro Starbucks (AKA “Starbears”)</p>
+  <p class="lead">End: GLBT History Museum, 4127 18th St.</p>  
+  <p class="lead">Materials:  1 device that has internet connection and camera built in; comfortable shoes</p> 
+  <p class="lead">Guidelines: You'll be sumitting your answers as you go, <%= link_to("upload your photos", "https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=free+image+hosting", target: "_blank") %> using a photosharing service (we recommend something like Photobucket) and submit the URL for the photo. You won't be able to finish it all.</p> 
+  <p class="lead">Submit your answers to get the next clue!</p>
+  <%= link_to("Begin!", user_challenge_path(@user, @challenge), class: "btn btn-default next_challenge") %>
+</div>
+
