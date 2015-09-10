@@ -17,4 +17,16 @@ class User < ActiveRecord::Base
                    ).map(&:points)
                     .reduce(:+)
   end
+
+  def self.total_submissions(user)
+    Submission.pluck(:user.id).length
+  end
+
+  def self.next_challenge(user)
+    Challenge.find(Submission
+              .where(user_id: user.id)
+              .last
+              .challenge_id)
+              .next
+  end
 end
