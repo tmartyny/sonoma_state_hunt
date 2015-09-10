@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def self.total_submissions(user)
-    Submission.pluck(:user.id).length
+    Submission.pluck(:user_id).length
   end
 
   def self.next_challenge(user)
