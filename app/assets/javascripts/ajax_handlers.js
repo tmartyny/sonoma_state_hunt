@@ -15,9 +15,13 @@ var createSubmissionHandler = function() {
 
     request.done(function(response) {
       successMessage = "<span class='success'><p>Excellent!</p><p>Watch the video on the left to learn more.</p><p>Click 'Next Clue' to move along to the next clue. You're on a roll!</p><p>Don't forget to keep an eye on the clock.</p><p>You have ## landmarks left to find.</p></span>"
-      $("#form_submission").remove(); //remove the submission form
-      $("#challenge_media").append(response); //add the video and next button
-      $("#challenge_clue").append(successMessage); //add the success message below clue
+      $(".challenge_body").empty(); //remove current contents of screen
+      $(".challenge_body").append(data); //display new challenge
+
+      // revist options below once videos are added to system
+      // $("#form_submission").remove(); //remove the submission form
+      // $("#challenge_media").append(response); //add the video and next button
+      // $("#challenge_clue").append(successMessage); //add the success message below clue
     });
 
     request.fail(function(jqXHR, textStatus, errorThrown) {
