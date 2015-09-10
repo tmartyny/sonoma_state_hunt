@@ -1,5 +1,5 @@
 var getCoordinates = function() {
-  $('.container').on('click', '#checkTemp', function(){
+  $('.container').on('touchstart click', '#checkTemp', function(){
     var hotCold = $("#hotCold");
     function getLocation() {
         if (navigator.geolocation) {
