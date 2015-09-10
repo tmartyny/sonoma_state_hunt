@@ -14,10 +14,12 @@
     </header>
     <main role="main">
       <div class="container">
-        <div class="header clearfix">
-          <h3 class="text-muted pull-right" id="clock"></h3>
-          <h3 class="text-muted">Sonoma State: Great Homo History Hunt</h3>
-        </div>
+        <% if user_signed_in? %>
+          <div class="header clearfix">
+            <h3 class="text-muted pull-right" id="clock"></h3>
+            <!-- <h3 class="text-muted">Sonoma State: Great Homo History Hunt</h3> -->
+          </div>
+        <% end %>
         <%= render 'layouts/messages' %>
         <%= yield %>
       </div>
