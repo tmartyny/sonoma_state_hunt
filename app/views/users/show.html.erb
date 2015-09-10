@@ -5,7 +5,7 @@
   <% end %>
   <% if @total_submissions %>
     <h4 class="text-muted"> Clues Answered: <%= @total_submissions %></h4>
-    <h4 class="text-muted"> <%= link_to("Next Clue!", user_challenge_path(@user, @next_challenge), class: "btn btn-default next_challenge") %></h4>
+    <h4 class="text-muted"> <%= link_to("Next Clue!", user_challenge_path(@user, @next_challenge), remote: true, class: "btn btn-default next_challenge") %></h4>
   <% end %>
   <p class="lead">If you are completing the hunt for Professor Romesburg's class, we've provided a timer for you above. Otherwise, just enjoy the hunt! You can come back to the hunt at any time to continue the adventure.</p>
   <% if !@total_submissions %>
