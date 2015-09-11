@@ -3,9 +3,8 @@ class ChallengesController < ApplicationController
   respond_to :html, :json
   def show
     @submission = Submission.new
-    @user = User.find(params[:user_id])
-    @challenge = Challenge.find(params[:id])
-    @total_points = User.total_points(current_user)
+    find_challenge
+    total_points
     render 'show', layout: false
   end
 end
