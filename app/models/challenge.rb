@@ -16,4 +16,8 @@ class Challenge < ActiveRecord::Base
   def previous
     self.class.where("id < ?", id).last
   end
+
+  def self.final_challenge_id
+    Challenge.last.id
+  end
 end
