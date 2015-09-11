@@ -1,22 +1,22 @@
 <div class="challenge_body">
   <p class="lead">Hello <%= current_user.name if current_user.name %>!</p>
-  <% if !@next_challenge && @total_submissions > 0 %>
+  <% if @hunt_complete %>
     <h4 class="text-muted">Congratulations! You finished the hunt!</h4> 
   <% end %>
-  <% if @total_points %>
+
+  <% if @has_submissions %>
     <h4 class="text-muted"> Your Score: <%= @total_points %></h4>
-  <% end %>
-  <% if @total_submissions > 0 %>
     <h4 class="text-muted"> Clues Answered: <%= @total_submissions %></h4>
-    <% if @next_challenge %>
+    <% if !@hunt_complete %>
     <h4 class="text-muted"> <%= button_to "Next Clue!", user_challenge_path(current_user, @next_challenge), remote: true, class: "btn btn-default next_challenge", method: :get %></h4>
     <% end %>
   <% end %>
-  <% if @next_challenge || @total_submissions == 0 %>
+
+  <% if !@hunt_complete %>
   <p class="lead">If you are completing the hunt for Professor Romesburg's class, we've provided a timer for you above. Otherwise, just enjoy the hunt! You can come back to the hunt at any time to continue the adventure.</p>
   <% end %>
-  <% if @total_submissions == 0 %>
-
+  
+  <% if !@has_submissions %>
     <%= button_to "Begin!", user_challenge_path(current_user, @challenge), remote: true, class: "btn btn-default next_challenge", method: :get %>
   <% end %>
 </div>
