@@ -9,8 +9,10 @@ class SubmissionsController < ApplicationController
     @challenge = current_challenge.next
     @submission = Submission.new(submission_params)
     @submission.user_id = current_user.id
-    if @submission.save!
+    if @submission.save! && @challenge
       redirect_to user_challenge_path(current_user, @challenge)
+    else
+      redirect_to user_path(current_user)
     end
   end
 
