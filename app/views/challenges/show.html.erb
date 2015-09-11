@@ -3,7 +3,7 @@
   window.destinationLon = '<%= @challenge.lon %>';
 <% end %>
 <% if @total_points %>
-  <h4 class="text-muted"> Your Score: <%= @total_points %></h4>
+  <h4 class="text-primary"> Your Score: <%= @total_points %></h4>
 <% end %>
 <div class="col-md-8 pull-left" id="challenge_media">
   <%= image_tag(@challenge.photo_url, class: "challenge_photo") %>
