@@ -11,11 +11,15 @@ class User < ActiveRecord::Base
   end
 
   def self.total_points(user)
-    Challenge.find(Submission
-                    .where(user_id: user.id)
-                    .pluck(:challenge_id)
-                   ).map(&:points)
-                    .reduce(:+)
+    if Submission.where(user_id: user.id).length > 0
+      Challenge.find(Submission
+                      .where(user_id: user.id)
+                      .pluck(:challenge_id)
+                     ).map(&:points)
+                      .reduce(:+)
+    else
+      nil
+    end
   end
 
   def self.total_submissions(user)
@@ -23,10 +27,14 @@ class User < ActiveRecord::Base
   end
 
   def self.next_challenge(user)
-    Challenge.find(Submission
-              .where(user_id: user.id)
-              .last
-              .challenge_id)
-              .next
+    if Submission.where(user_id: user.id).length > 0
+      Challenge.find(Submission
+                .where(user_id: user.id)
+                .last
+                .challenge_id)
+                .next
+    else
+      nil
+    end
   end
 end

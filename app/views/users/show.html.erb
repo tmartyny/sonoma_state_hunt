@@ -3,13 +3,13 @@
   <% if @total_points %>
     <h4 class="text-muted"> Your Current Score: <%= @total_points %></h4>
   <% end %>
-  <% if @total_submissions %>
+  <% if @total_submissions > 0 %>
     <h4 class="text-muted"> Clues Answered: <%= @total_submissions %></h4>
-    <h4 class="text-muted"> <%= link_to("Next Clue!", user_challenge_path(@user, @next_challenge), remote: true, class: "btn btn-default next_challenge") %></h4>
+    <h4 class="text-muted"> <%= link_to("Next Clue!", user_challenge_path(current_user, @next_challenge), remote: true, class: "btn btn-default next_challenge") %></h4>
   <% end %>
   <p class="lead">If you are completing the hunt for Professor Romesburg's class, we've provided a timer for you above. Otherwise, just enjoy the hunt! You can come back to the hunt at any time to continue the adventure.</p>
-  <% if !@total_submissions %>
-    <%= link_to("Begin!", user_challenge_path(@user, @challenge), class: "btn btn-default next_challenge") %>
+  <% if @total_submissions == 0 %>
+    <%= link_to("Begin!", user_challenge_path(@user, @challenge), remote: true, class: "btn btn-default next_challenge") %>
   <% end %>
 </div>
 
