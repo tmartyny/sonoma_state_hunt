@@ -18,7 +18,7 @@
   </p>
   <p><%=@challenge.clue%></p>
 
-  <%= form_for [@user, @submission], remote: true do |f| %>
+  <%= form_for [current_user, @submission], remote: true do |f| %>
     <%= f.label "URL for Your Photo" %>
     <%= f.text_field :photo %>
     <%= f.label "Answer Questions:" %>
