@@ -1,5 +1,5 @@
 $(function() {
-  ajaxHandler(); //submit form for user solution
+  ajaxHandler(); 
 });
 
 var ajaxHandler = function() {
