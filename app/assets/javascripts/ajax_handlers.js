@@ -10,4 +10,3 @@ var ajaxHandler = function() {
     console.log("Ajax Error!");
   });
 };
-
