@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users do
-    resources :submissions, only: [:new, :index, :create]
+    resources :submissions, only: [:new, :index, :create, :update]
     resources :challenges, only: [:show]
   end
 
