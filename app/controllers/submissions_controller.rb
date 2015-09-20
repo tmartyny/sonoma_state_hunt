@@ -16,9 +16,16 @@ class SubmissionsController < ApplicationController
     end
   end
 
+  def update
+    submission = Submission.find(params[:id])
+    if submission.update(submission_params)
+      redirect_to admin_hunt_path
+    end
+  end
+
   private
 
   def submission_params
-    params.require(:submission).permit(:user_id, :challenge_id, :text, :photo, :lat, :lon)
+    params.require(:submission).permit(:user_id, :challenge_id, :text, :photo, :lat, :lon, :photo_approved)
   end
 end
