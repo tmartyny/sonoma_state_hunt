@@ -7,6 +7,7 @@ class CreateSubmissions < ActiveRecord::Migration
       t.string :photo
       t.float :lat
       t.float :lon
+      t.boolean :photo_approved
 
       t.timestamps null: false
     end
