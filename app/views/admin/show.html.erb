@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= form_tag(admin_hunt_path, :method => "get") do %>
+      <%= hidden_field_tag :begin_hunt, :value => true %>
+      <%= submit_tag "Start Hunt!", class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 pull-left">
+    <h3>Reset Students</h3>
+    <%= form_tag(admin_reset_path, :method => "patch") do %>
+      <%= hidden_field_tag :reset, :value => true %>
+      <%= submit_tag "Reset!", class: "btn btn-default" %>
+    <% end %>
+  </div>
+  <div class="col-md-8 pull-left">
+    <h3>Find Student</h3>
+    <%= form_tag(admin_search_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Enter User Name" %>
+      <%= submit_tag "Search", class: "btn btn-default", :name => nil %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <h3>Current Students:</h3>
+  <div class="column">
+    <table class="table">
+      <tbody>
+        <% @students.each do |student| %>
+          <tr>
+            <%= render student %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

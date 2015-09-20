@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>Submitted By: <%= current_user.name %></h3>
+  </div>
+  <div class="col-md-12">
+    <h3>Challenge: <%= @challenge_name %></h3>
+  </div>
+  <!-- <div class="col-md-12">
+    <h3>Swipe Right to Approve, Left to Reject</h3>
+  </div> -->
+</div>
+<div class="row">
+  <div class="col-md-6 pull-left">
+    <%= form_for [current_user, @current_submission], :method => "patch", :id => "reject" do |f| %>
+      <%= f.hidden_field :photo_approved, :value => false %>
+      <%= f.submit "Reject", class: "btn btn-default" %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= form_for [current_user, @current_submission], :method => "patch", :id => "approve" do |f| %>
+      <%= f.hidden_field :photo_approved, :value => true %>
+      <%= f.submit "Approve", class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= image_tag(@submission_photo, class: "submission_photo") %>
+  </div>
+</div>
