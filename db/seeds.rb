@@ -133,3 +133,42 @@ Challenge.create(
   clue: "In May 1951, jazz hotspot Club Alabam was one of 21 bars that the US Armed Forces Disciplinary Control Board investigated.  Military Police visited the joint over 20 times (just to be sure?) before concluding that the place has not just female prostitutes but “certain homosexual elements.”  They placed it “off limits and out of bounds” for 90 days.  The memos servicemembers received regarding banned places provided an early gay guide to newcomers to the San Francisco scene.  Find its former site on Post near Fillmore where the current establishment shares its name with a famous San Francisco landmark.  Take a picture of the entire team saluting with a limp wrist, Mary.",
   lat: 37.7853787,
   lon: -122.43213996)
+
+20.times do
+  User.create(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    provider: "Facebook",
+    uid: Faker::Number.number(17),
+    admin: false,
+    current_student: true
+    )
+end
+
+20.times do
+  User.create(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    provider: "Facebook",
+    uid: Faker::Number.number(17),
+    admin: false,
+    current_student: false
+    )
+end
+
+# Generate full set of submissions for all fake users
+user_index = 1
+20.times do
+  challenge_index = 1
+  12.times do
+    Submission.create(
+      challenge_id: challenge_index,
+      user_id: user_index,
+      text: Faker::Lorem.sentence,
+      photo: Faker::Company.logo,
+      photo_approved: false,
+      )
+    challenge_index += 1
+  end
+  user_index += 1
+end
