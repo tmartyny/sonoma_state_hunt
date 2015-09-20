@@ -4,8 +4,10 @@ Rails.application.routes.draw do
     resources :challenges, only: [:show]
   end
 
-  
   root to: 'visitors#index'
+
+  # Admin Console
+  get '/admin' => 'admin#show', :as => :admin
 
   # User Auth
   get '/auth/:provider/callback' => 'sessions#create'
