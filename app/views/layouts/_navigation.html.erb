@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
   <div class="navbar-header pull-left">
-    <p class="navbar-text">Sonoma State: Great Homo History Hunt <% if user_signed_in? %><div class="navbar-text" id="clock"></div><% end %></p>
+    <p class="navbar-text">Sonoma State: Great Homo History Hunt <% if user_signed_in? && current_user.current_student %><div class="navbar-text" id="clock"></div><% end %></p>
   </div>
     <div class="navbar-header">
       
