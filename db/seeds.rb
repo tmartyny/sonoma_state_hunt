@@ -166,7 +166,7 @@ user_index = 1
       user_id: user_index,
       text: Faker::Lorem.sentence,
       photo: Faker::Company.logo,
-      photo_approved: false,
+      photo_approved: nil,
       )
     challenge_index += 1
   end
