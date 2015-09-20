@@ -46,4 +46,8 @@ class User < ActiveRecord::Base
                 .challenge_id)
                 .next
   end
+
+  def self.search(query)
+    where("name ilike ?", "%#{query}%") 
+  end
 end
