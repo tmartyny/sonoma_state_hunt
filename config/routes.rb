@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   # Admin Console
   get '/admin' => 'admin#show', :as => :admin
+  get '/admin/search' => 'admin#search'
+  patch '/admin/reset' => 'admin#reset' #reset all users to non-students 
 
   # User Auth
   get '/auth/:provider/callback' => 'sessions#create'
